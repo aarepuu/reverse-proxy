@@ -30,6 +30,8 @@ services:
     #   - "traefik.http.routers.dashboard.service=api@internal"
     #   - "traefik.http.routers.dashboard.middlewares=auth"
     #   - "traefik.http.middlewares.auth.basicauth.users=${DASHBOARD_USER}:${DASHBOARD_PASSWORD}"  
+    networks: 
+        - web
     ports:
       - "80:80"
       - "443:443"
