@@ -1,7 +1,9 @@
 # reverse-proxy
 A simple reverse proxy using Traefik
 
-# deployment
+
+
+## Deployment
 
 ```bash
 # clone repo
@@ -12,5 +14,4 @@ cp .env.example .env
 
 # start the proxy
 docker-compose up -d
-
 ```

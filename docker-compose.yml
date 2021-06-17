@@ -20,6 +20,10 @@ services:
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--entrypoints.websecure.address=:443"
+    #   socialvr endpoints
+      - "--entrypoints.socialvr-tcp.address=:8004"
+      - "--entrypoints.socialvr-socket.address=:8005"
+      - "--entrypoints.socialvr-sandbox.address=:8006"
       - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
@@ -35,6 +39,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "8004:8004"
+      - "8005:8005"
+      - "8006:8006"
       - "127.0.0.1:8080:8080"
     volumes:
       - "./letsencrypt:/letsencrypt"
