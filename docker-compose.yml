@@ -1,14 +1,14 @@
-version: "3.3"
+version: "3.8"
 
 networks:
     web:
       external: true
 
 services:
-
-  traefik:
-    image: "traefik:v2.4"
+  reverse-proxy:
+    image: "traefik:v2.10"
     container_name: "traefik"
+    restart: always
     command:
       #- "--log.level=DEBUG"
       - "--api.insecure=false"
@@ -37,9 +37,12 @@ services:
     networks:
         - web
     ports:
+      # The HTTP port
       - "80:80"
+      # The HTTPS port
       - "443:443"
-     # - "8080:8080"
+      # The Web UI (enabled by --api.insecure=true)
+      # - "8080:8080"
     volumes:
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
